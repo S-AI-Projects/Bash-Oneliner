@@ -2054,7 +2054,9 @@ compgen -g
 
 ##### Show group of user
 ```bash
-group username
+groups username           # alice : alice sudo docker
+# or
+id -Gn username           # alice sudo docker
 ```
 
 ##### Show uid, gid, group of user
