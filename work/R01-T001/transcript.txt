@@ -1,0 +1,66 @@
+Task R01-T001 Transcript: Correct the 'Show group of user' entry
+Date: 2026-11-09
+OS: Darwin (macOS 15.3.1 / Unix coreutils compatible)
+Shell: GNU bash, version 3.2.57(1)-release
+
+======================================================================
+1. Demonstrating error in the original entry: 'group username'
+======================================================================
+$ type group
+bash: line 1: type: group: not found
+
+$ group "$USER"
+bash: group: command not found
+
+Findings:
+'group' is not a valid or standard Unix/Linux command in coreutils or bash builtins.
+Executing `group "$USER"` fails with `bash: group: command not found`.
+
+======================================================================
+2. Finding correct commands: 'groups' and 'id -Gn'
+======================================================================
+The standard coreutils utility to show groups of a user is `groups`:
+$ groups "$USER"
+staff everyone localaccounts _appserverusr admin _appserveradm _appstore _lpadmin _lpoperator _developer _analyticsusers com.apple.access_ftp com.apple.access_screensharing com.apple.access_ssh com.apple.access_remote_ae com.apple.sharepoint.group.1
+
+The equivalent command using `id` is `id -Gn` (print group names instead of numbers):
+$ id -Gn "$USER"
+staff everyone localaccounts _appserverusr admin _appserveradm _appstore _lpadmin _lpoperator _developer _analyticsusers com.apple.access_ftp com.apple.access_screensharing com.apple.access_ssh com.apple.access_remote_ae com.apple.sharepoint.group.1
+
+======================================================================
+3. Testing for root user
+======================================================================
+$ groups root
+wheel daemon kmem sys tty operator procview procmod everyone staff certusers localaccounts admin _appstore _lpadmin _lpoperator _developer _analyticsusers com.apple.access_ftp com.apple.access_screensharing com.apple.access_ssh com.apple.access_remote_ae com.apple.sharepoint.group.1
+
+$ id -Gn root
+wheel daemon kmem sys tty operator procview procmod everyone staff certusers localaccounts admin _appstore _lpadmin _lpoperator _developer _analyticsusers com.apple.access_ftp com.apple.access_screensharing com.apple.access_ssh com.apple.access_remote_ae com.apple.sharepoint.group.1
+
+======================================================================
+4. Diffing the two outputs
+======================================================================
+$ diff -u <(groups "$USER" | sed 's/^.*: *//' | tr ' ' '\n') <(id -Gn "$USER" | tr ' ' '\n')
+(No differences found; diff exited with 0)
+
+$ diff -u <(groups root | sed 's/^.*: *//' | tr ' ' '\n') <(id -Gn root | tr ' ' '\n')
+(No differences found; diff exited with 0)
+
+Conclusion:
+`groups username` and `id -Gn username` output identical group lists for any given user.
+
+======================================================================
+5. Comparison with neighbouring entry (L2060): 'Show uid, gid, group of user'
+======================================================================
+Neighbouring entry:
+##### Show uid, gid, group of user
+```bash
+id username
+
+# variable for UID
+echo $UID
+```
+
+Analysis of boundaries and non-overlap:
+- 'Show group of user' focuses strictly on listing group names to which a user belongs (`groups username` or `id -Gn username`).
+- 'Show uid, gid, group of user' displays the full identity tuple using `id username`, outputting uid, gid, and all secondary groups with both numerical IDs and names (e.g. uid=501(aanyaahuja) gid=20(staff) groups=20(staff),12(everyone)...), as well as the `$UID` environment variable.
+- The two entries serve distinct purposes, do not duplicate syntax, and do not contradict each other.
