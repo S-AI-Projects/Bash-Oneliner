@@ -2095,6 +2095,9 @@ quota -v username
 ##### Display current libraries from the cache
 ```bash
 ldconfig -p
+
+# The library list is read from /etc/ld.so.cache
+ldconfig -p | grep libc.so.6    # libc.so.6 (libc6,x86-64, OS ABI: Linux 3.2.0) => /lib/x86_64-linux-gnu/libc.so.6
 ```
 
 ##### Print shared library dependencies (e.g. for 'ls')
