@@ -3497,6 +3497,10 @@ yes anything
 
 # pipe yes to other command
 yes | rm -r large_directory
+
+# Warning: Piping 'yes' into 'rm -r' auto-confirms prompts for write-protected files without safety checks.
+# 'rm -rf dir' forces deletion and never prompts (ignoring write protection).
+# 'rm -ri dir' prompts before deleting each file; 'yes | rm -ri dir' confirms every prompt, whereas 'yes n | rm -ri dir' skips them all.
 ```
 
 ##### Create large dummy file of certain size instantly (e.g. 10GiB)
