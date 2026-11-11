@@ -2007,6 +2007,15 @@ getent passwd
 # (e.g. fetch list of grop accounts)
 getent group
 # store in database 'group'
+
+# (e.g. look up service by port number)
+getent services 22        # ssh 22/tcp
+
+# (e.g. look up host entry by hostname)
+getent hosts localhost    # 127.0.0.1 localhost
+
+# (e.g. look up group entry by name)
+getent group sudo         # sudo:x:27:runner
 ```
 
 ##### Change owner of file
