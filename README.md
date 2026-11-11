@@ -90,7 +90,7 @@ sudo !!
 
 # Notice that only the first aaa will be replaced, if you want to replace all 'aaa', use ':&' to repeat it:
 ^aaa^bbb^:&
-# or
+# or, replace every matching occurrence globally
 !!:gs/aaa/bbb/
 ```
 

@@ -1,0 +1,23 @@
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+bash-3.2$ echo aaa aaa
+aaa aaa
+bash-3.2$ ^aaa^bbb
+echo bbb aaa
+bbb aaa
+bash-3.2$ !!:gs/aaa/bbb/
+echo bbb bbb
+bbb bbb
+bash-3.2$ echo xyz
+xyz
+bash-3.2$ ^aaa^bbb
+bash: :s^aaa^bbb: substitution failed
+bash-3.2$ set +H
+bash-3.2$ echo aaa aaa
+aaa aaa
+bash-3.2$ ^aaa^bbb
+bash: ^aaa^bbb: command not found
+bash-3.2$ exit
+exit
