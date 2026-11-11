@@ -284,6 +284,15 @@ echo "'$foo'"
 # doubled single quotes act as if there are no quotes at all
 echo ''$foo''
 # bar
+# ANSI-C quoting interprets escape sequences
+printf '%s\n' $'first\nsecond'
+# first
+# second
+
+# Escaped dollar sign prevents variable expansion
+foo=bar
+printf '%s\n' \$foo
+# $foo
 ```
 
 ##### Get the length of variable
