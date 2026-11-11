@@ -1,0 +1,9 @@
+bar
+$foo
+'bar'
+$foo
+first
+second
+<>
+$missing_var
+She said: "hello, world"
