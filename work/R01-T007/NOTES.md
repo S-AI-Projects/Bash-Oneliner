@@ -53,6 +53,8 @@ sdb     0
 
 ## 3. GitHub Actions CI Workflow (`r01-t007.yml`)
 
+- **Green Actions Run Link**: https://github.com/aanyaahuja002-pixel/Bash-Oneliner/actions/runs/43191760701
+
 The workflow `.github/workflows/r01-t007.yml`:
 1. Triggers on push and pull request events touching `work/R01-T007/**` or `.github/workflows/r01-t007.yml`.
 2. Runs on `ubuntu-latest`.
