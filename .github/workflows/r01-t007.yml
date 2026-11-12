@@ -1,0 +1,34 @@
+name: "R01-T007: Run README one-liner in GitHub Actions"
+
+on:
+  push:
+    paths:
+      - "work/R01-T007/**"
+      - ".github/workflows/r01-t007.yml"
+  pull_request:
+    paths:
+      - "work/R01-T007/**"
+      - ".github/workflows/r01-t007.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  run-one-liner:
+    name: Extract and verify lsblk one-liner
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Extract and execute README entry
+        run: |
+          header=$(bash work/R01-T007/extract.sh 'Print detail of all hard disks' | bash | head -n 1)
+          echo "Output header: $header"
+
+          # Assert header contains KNAME, TYPE, and ROTA
+          echo "$header" | grep -q "KNAME" || { echo "Error: Missing KNAME in header" >&2; exit 1; }
+          echo "$header" | grep -q "TYPE"  || { echo "Error: Missing TYPE in header" >&2; exit 1; }
+          echo "$header" | grep -q "ROTA"  || { echo "Error: Missing ROTA in header" >&2; exit 1; }
+          echo "Verification passed: Header contains KNAME, TYPE, and ROTA."
