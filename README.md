@@ -3027,7 +3027,12 @@ echo -e 'text here \c'
 
 ##### View first 50 characters of file
 ```bash
+# Tested on Debian 13 (x86_64) with GNU Bash 5.2.37, GNU coreutils 9.7, BusyBox 1.37.0, and Python 3.13.5.
+# `head -c` counts bytes, not characters; it can split a multi-byte UTF-8 character.
 head -c 50 filename
+
+# Read the first 50 Unicode code points from a UTF-8 file without splitting a code point:
+python3 -c 'import sys; text=sys.stdin.buffer.read().decode("utf-8"); sys.stdout.buffer.write(text[:50].encode("utf-8"))' < filename
 ```
 
 ##### Cut and get last column of a file
