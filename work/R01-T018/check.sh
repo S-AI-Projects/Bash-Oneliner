@@ -8,7 +8,7 @@ trap 'rm -rf "$tmp_dir"' EXIT
 
 for command_name in head busybox iconv python3 wc cmp locale; do
   if ! command -v "$command_name" >/dev/null 2>&1; then
-    printf 'Required command not found: %s\\n' "$command_name" >&2
+    printf 'Required command not found: %s\n' "$command_name" >&2
     exit 1
   fi
 done
@@ -21,7 +21,7 @@ for candidate in C.UTF-8 C.utf8 en_US.UTF-8; do
   fi
 done
 if [[ -z "$utf8_locale" ]]; then
-  printf 'No UTF-8 locale is available for wc -m.\\n' >&2
+  printf 'No UTF-8 locale is available for wc -m.\n' >&2
   exit 1
 fi
 
@@ -30,11 +30,11 @@ busybox head -c 50 "$hindi_file" > "$tmp_dir/busybox-50.bin"
 [[ $(wc -c < "$tmp_dir/gnu-50.bin" | tr -d '[:space:]') == 50 ]]
 [[ $(wc -c < "$tmp_dir/busybox-50.bin" | tr -d '[:space:]') == 50 ]]
 if iconv -f UTF-8 -t UTF-8 "$tmp_dir/gnu-50.bin" >/dev/null 2>&1; then
-  printf 'GNU head output unexpectedly remained valid UTF-8.\\n' >&2
+  printf 'GNU head output unexpectedly remained valid UTF-8.\n' >&2
   exit 1
 fi
 if iconv -f UTF-8 -t UTF-8 "$tmp_dir/busybox-50.bin" >/dev/null 2>&1; then
-  printf 'BusyBox head output unexpectedly remained valid UTF-8.\\n' >&2
+  printf 'BusyBox head output unexpectedly remained valid UTF-8.\n' >&2
   exit 1
 fi
 cmp -s "$tmp_dir/gnu-50.bin" "$tmp_dir/busybox-50.bin"
@@ -45,6 +45,6 @@ char_count=$(LC_ALL="$utf8_locale" wc -m < "$tmp_dir/safe-50.txt" | tr -d '[:spa
 [[ "$char_count" == 50 ]]
 iconv -f UTF-8 -t UTF-8 "$tmp_dir/safe-50.txt" >/dev/null
 
-printf 'PASS: GNU head -c 50 outputs 50 bytes and splits a UTF-8 character.\\n'
-printf 'PASS: BusyBox head -c 50 matches GNU and also splits a UTF-8 character.\\n'
-printf 'PASS: Python alternative outputs exactly 50 characters (%s locale), valid UTF-8.\\n' "$utf8_locale"
+printf 'PASS: GNU head -c 50 outputs 50 bytes and splits a UTF-8 character.\n'
+printf 'PASS: BusyBox head -c 50 matches GNU and also splits a UTF-8 character.\n'
+printf 'PASS: Python alternative outputs exactly 50 characters (%s locale), valid UTF-8.\n' "$utf8_locale"
