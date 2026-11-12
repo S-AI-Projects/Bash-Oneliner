@@ -1,0 +1,70 @@
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+bash-3.2$ PS1='T015$ '
+T015$ history -c
+T015$ echo number-target
+number-target
+T015$ !1
+echo number-target
+number-target
+T015$ history -c
+T015$ echo relative-target
+relative-target
+T015$ echo later
+later
+T015$ !-2
+echo relative-target
+relative-target
+T015$ history -c
+T015$ echo double-target
+double-target
+T015$ !!
+echo double-target
+double-target
+T015$ history -c
+T015$ echo prefix-target
+prefix-target
+T015$ !echo
+echo prefix-target
+prefix-target
+T015$ history -c
+T015$ echo alpha-needle-omega
+alpha-needle-omega
+T015$ !?needle?
+echo alpha-needle-omega
+alpha-needle-omega
+T015$ history -c
+T015$ echo alpha beta
+alpha beta
+T015$ echo !^
+echo alpha
+alpha
+T015$ history -c
+T015$ echo alpha beta
+alpha beta
+T015$ echo !$
+echo beta
+beta
+T015$ history -c
+T015$ echo alpha beta
+alpha beta
+T015$ echo !*
+echo alpha beta
+alpha beta
+T015$ history -c
+T015$ echo no-execute-target
+no-execute-target
+T015$ !!:p
+echo no-execute-target
+T015$ echo after-print-only
+after-print-only
+T015$ shopt -s histverify
+T015$ !!
+T015$ shopt -s histverify
+T015$ cat /dev/null
+T015$ !cat
+T015$ cat /dev/null
+T015$ exit
+exit
