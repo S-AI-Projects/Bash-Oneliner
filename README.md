@@ -733,9 +733,11 @@ sed 's/A/B/g' filename
 sed "s/aaa=.*/aaa=\/my\/new\/path/g"
 ```
 
-##### Select lines start with string (e.g. 'bbo')
+##### Select lines start with string (e.g. '@S')
 ```bash
 sed -n '/^@S/p'
+# or
+grep '^@S'
 ```
 ##### Delete lines with string (e.g. 'bbo')
 ```bash

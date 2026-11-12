@@ -1,0 +1,2 @@
+@SRR001.1 FASTQ read header 1
+@SRR001.2 FASTQ read header 2
