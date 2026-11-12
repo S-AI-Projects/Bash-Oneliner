@@ -3195,8 +3195,13 @@ cal -m 11
 
 ##### Convert the hexadecimal MD5 checksum value into its base64-encoded format.
 ```bash
-openssl md5 -binary /path/to/file| base64
-# NWbeOpeQbtuY0ATWuUeumw==
+# Tested on macOS 26.6.2 with Bash 3.2.57 and OpenSSL 4.1.0.
+openssl md5 -binary /path/to/file | base64
+
+# GNU coreutils alternative
+md5sum /path/to/file | cut -d' ' -f1 | xxd -r -p | base64
+
+# MD5 is not suitable for passwords; use a password-hashing function instead.
 ```
 
 ##### Forces applications to use the default language for output
