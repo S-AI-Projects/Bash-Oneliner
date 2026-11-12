@@ -1,0 +1,18 @@
+$ uname -srmo
+Linux 6.18.57 x86_64 GNU/Linux
+$ bash --version | head -n1
+GNU bash, version 5.2.37(1)-release (x86_64-pc-linux-gnu)
+$ head --version | head -n1
+head (GNU coreutils) 9.7
+$ busybox | head -n1
+BusyBox v1.37.0 (Debian 1:1.37.0-6+b8) multi-call binary.
+$ python3 --version
+Python 3.13.5
+$ iconv --version | head -n1
+iconv (Debian GLIBC 2.41-12+deb13u3) 2.41
+$ LC_ALL=C.UTF-8 locale charmap
+UTF-8
+$ bash work/R01-T018/check.sh
+PASS: GNU head -c 50 outputs 50 bytes and splits a UTF-8 character.
+PASS: BusyBox head -c 50 matches GNU and also splits a UTF-8 character.
+PASS: Python alternative outputs exactly 50 characters (C.UTF-8 locale), valid UTF-8.
