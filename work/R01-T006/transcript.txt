@@ -1,0 +1,69 @@
+# Task R01-T006 Execution Transcript
+
+Date: 2026-11-12
+Host: example.net
+Target Ports: 80 (HTTP, open), 22 (SSH, filtered/closed)
+
+======================================================================
+1. Probing Port 80 (Open Port)
+======================================================================
+Command:
+$ time nc -vw5 example.net 80 < /dev/null
+
+Output:
+Connection to example.net port 80 [tcp/http] succeeded!
+
+Timing:
+real    0m0.092s
+user    0m0.002s
+sys     0m0.004s
+
+Observations:
+Connection succeeded almost instantly (<0.1s) because port 80 is open and actively accepting TCP connections.
+
+======================================================================
+2. Probing Port 22 (Filtered / Closed Port)
+======================================================================
+Command:
+$ time nc -vw5 example.net 22 < /dev/null
+
+Output:
+nc: connect to example.net port 22 (tcp) timed out: Operation now in progress
+
+Timing:
+real    0m5.018s
+user    0m0.003s
+sys     0m0.005s
+
+Observations:
+Connection failed after ~5.0 seconds as specified by the -w5 timeout flag. The remote host discards/filters incoming TCP SYN packets on port 22, causing nc to wait for the timeout period before aborting.
+
+======================================================================
+3. Flags Explanation (-v and -w5)
+======================================================================
+- -v (verbose): Instructs nc to print diagnostic connection status messages (e.g., "Connection to ... succeeded!" or failure/timeout reasons).
+- -w5 (wait / timeout): Sets the connection and network idle timeout to 5 seconds. Without a timeout flag, nc would hang waiting for the operating system's default TCP connection timeout (~75-120 seconds).
+
+======================================================================
+4. Speaking Raw HTTP HEAD to example.net:80
+======================================================================
+Command:
+$ printf 'HEAD / HTTP/1.1\r\nHost: example.net\r\nConnection: close\r\n\r\n' | nc example.net 80
+
+Response Headers:
+HTTP/1.1 200 OK
+Date: Thu, 12 Nov 2026 09:15:10 GMT
+Content-Type: text/html; charset=utf-8
+Connection: close
+Server: cloudflare
+Last-Modified: Thu, 05 Nov 2026 21:17:41 GMT
+Allow: GET, HEAD
+Accept-Ranges: bytes
+Age: 5
+Cache-Control: max-age=14400
+cf-cache-status: HIT
+CF-RAY: a5946e3ecbbe8b03-BOM
+alt-svc: h3=":443"; ma=86400
+
+First response line:
+HTTP/1.1 200 OK
