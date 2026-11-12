@@ -3411,8 +3411,9 @@ python3 -m http.server
 
 ##### Read user input
 ```bash
-read input
-echo $input
+# IFS= prevents whitespace trimming; -r preserves backslashes; printf avoids flag interpretation and globbing
+IFS= read -r input
+printf '%s\n' "$input"
 ```
 
 ##### Array
