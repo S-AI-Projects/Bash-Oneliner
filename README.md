@@ -2968,7 +2968,12 @@ foo=$(<test1)
 
 ##### Echo size of variable
 ```bash
-echo ${#foo}
+# Tested on macOS 15.6 with GNU Bash 3.2.57
+foo='नमस्ते'
+# ${#foo} counts characters in the current locale (6 here under C.UTF-8).
+echo "${#foo}"
+# Count bytes instead:
+printf '%s' "$foo" | wc -c
 ```
 
 ##### Echo a tab
