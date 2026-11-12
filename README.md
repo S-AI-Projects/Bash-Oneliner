@@ -3049,11 +3049,19 @@ cat filename|rev|cut -f1|rev
 
 ##### Create or replace a file with contents
 ```bash
+# Tested on macOS 15.6 with GNU Bash 3.2.57
+# Prevent accidental overwrites with Bash's noclobber option
+set -o noclobber
 cat >myfile
 let me add sth here
 # exit with ctrl+d
 
-# or using tee
+# Use >| only when you intend to replace an existing file
+cat >|myfile
+let me add replacement text here
+# exit with ctrl+d
+
+# tee replaces the file too; use tee -a when you mean to append
 tee myfile
 let me add sth else here
 # exit with ctrl+d
