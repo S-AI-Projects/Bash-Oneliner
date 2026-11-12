@@ -2629,6 +2629,10 @@ nc -vw5 example.net 80
 nc -vw5 example.net 22
 # nc: connect to example.net port 22 (tcp) timed out: Operation now in progress
 # nc: connect to example.net port 22 (tcp) failed: Network is unreachable
+
+# Send raw HTTP request:
+printf 'HEAD / HTTP/1.1\r\nHost: example.net\r\nConnection: close\r\n\r\n' | nc example.net 80
+# HTTP/1.1 200 OK
 ```
 
 ##### Nc as a chat tool!
