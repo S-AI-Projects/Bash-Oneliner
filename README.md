@@ -96,10 +96,21 @@ sudo !!
 
 ##### Run past command that began with (e.g. cat filename)
 ```bash
+# Tested with GNU Bash 3.2.57 on macOS 15.6.
 !cat
 # or
 !c
 # run cat filename again
+
+# repeat the latest command containing "needle"
+!?needle?
+
+# print the expanded command without executing it
+!!:p
+
+# put a recalled command back for review/editing before execution
+shopt -s histverify
+!cat
 ```
 
 ##### Bash globbing
