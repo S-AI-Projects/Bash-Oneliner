@@ -2529,7 +2529,12 @@ uuidgen
 ##### Print detail of all hard disks
 ```bash
 lsblk -io KNAME,TYPE,MODEL,VENDOR,SIZE,ROTA
-#where ROTA means rotational device / spinning hard disks (1 if true, 0 if false)
+# where ROTA indicates rotational device: 1 for spinning hard disks (HDD), 0 for non-rotational (SSD/NVMe)
+
+# Check rotational status of disks only (short form):
+lsblk -d -o NAME,ROTA
+# NAME ROTA
+# sda     0
 ```
 
 ##### List all PCI (Peripheral Component Interconnect) devices
