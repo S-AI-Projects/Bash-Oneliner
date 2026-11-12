@@ -1045,10 +1045,12 @@ xargs --show-limits
 
 ##### Move files to folder
 ```bash
-find . -name "*.bak" -print 0|xargs -0 -I {} mv {} ~/old
+# Tested on macOS 15.6 with GNU Bash 3.2.57.
+mkdir -p ~/old
+find . -name "*.bak" -print0 | xargs -0 -I {} mv {} ~/old
 
 # or
-find . -name "*.bak" -print 0|xargs -0 -I file mv file ~/old
+find . -name "*.bak" -print0 | xargs -0 -I file mv file ~/old
 ```
 
 ##### Move first 100th files to a directory (e.g. d1)
