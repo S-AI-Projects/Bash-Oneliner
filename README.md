@@ -974,6 +974,9 @@ awk '{s+=$1}END{print s/NR}'
 ##### Print field start with string (e.g Linux)
 ```bash
 awk '$1 ~ /^Linux/'
+
+# or using grep (plain grep '^Linux' fails on indented lines because awk's $1 ignores leading whitespace)
+grep -E '^[[:space:]]*Linux'
 ```
 
 ##### Sort a row (e.g. 1 40  35  12  23  --> 1 12    23  35  40)
