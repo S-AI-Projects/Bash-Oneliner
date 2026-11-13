@@ -19,6 +19,16 @@ OK | command: expr 30 \> 20 | expected: 1 | actual: 1
 
 In `expr 10 \* 20`, the backslash prevents Bash from treating `*` as a filename glob; it leaves a literal multiplication operator for `expr`. In `expr 30 \> 20`, the backslash prevents Bash from treating `>` as output redirection; `expr` receives it as its greater-than operator. The backslashes are shell quoting and do not reach `expr`.
 
+The original multiplication comment said `600`, but `10 * 20` is `200`. Once the spacing was corrected, the checker caught this incorrect claimed result too, so the README comment is corrected to `#200` for the check to pass.
+
+## After the README fix
+
+```text
+OK | command: expr 10 + 20 | expected: 30 | actual: 30
+OK | command: expr 10 \* 20 | expected: 200 | actual: 200
+OK | command: expr 30 \> 20 | expected: 1 | actual: 1
+```
+
 ## Environment
 
 CI runs the checker on Ubuntu 24.04 with Bash. The local checker is run in the task worktree and the repository's existing Bats tests are run separately.
