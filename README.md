@@ -978,6 +978,9 @@ awk '$1 ~ /^Linux/'
 
 ##### Sort a row (e.g. 1 40  35  12  23  --> 1 12    23  35  40)
 ```bash
+# Requires GNU awk (gawk): asort() is not POSIX.
+# Portable alternative for a single tab-separated row:
+# printf '%s\n' "$row" | tr '\t' '\n' | sort -n | paste -sd '\t' -
 awk ' {split( $0, a, "\t" ); asort( a ); for( i = 1; i <= length(a); i++ ) printf( "%s\t", a[i] ); printf( "\n" ); }'
 ```
 
