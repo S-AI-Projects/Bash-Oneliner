@@ -1,0 +1,46 @@
+export HISTFILE=/var/folders/j8/9vd20zmn1r15hvhthk9nsb480000gn/T/tmp.DJcLRD9jmE
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+bash-3.2$ export HISTFILE=/var/folders/j8/9vd20zmn1r15hvhthk9nsb480000gn/T/tm<var/folders/j8/9vd20zmn1r15hvhthk9nsb480000gn/T/tmp                         .DJcLRD9jmE
+bash-3.2$ echo 'cmd 1'
+cmd 1
+bash-3.2$ echo 'cmd 2'
+cmd 2
+bash-3.2$ echo 'cmd 3'
+cmd 3
+bash-3.2$ echo 'cmd 4'
+cmd 4
+bash-3.2$ echo 'cmd 5'
+cmd 5
+bash-3.2$ echo 'cmd 6 with old string'
+cmd 6 with old string
+bash-3.2$ fc -l -5
+35	 echo 'cmd 2'
+36	 echo 'cmd 3'
+37	 echo 'cmd 4'
+38	 echo 'cmd 5'
+39	 echo 'cmd 6 with old string'
+bash-3.2$ fc -l -5 -1
+36	 echo 'cmd 3'
+37	 echo 'cmd 4'
+38	 echo 'cmd 5'
+39	 echo 'cmd 6 with old string'
+40	 fc -l -5
+bash-3.2$ fc -s
+fc -l -5 -1
+37	 echo 'cmd 4'
+38	 echo 'cmd 5'
+39	 echo 'cmd 6 with old string'
+40	 fc -l -5
+41	 fc -l -5 -1
+bash-3.2$ fc -s old=new
+fc -l -5 -1
+38	 echo 'cmd 5'
+39	 echo 'cmd 6 with old string'
+40	 fc -l -5
+41	 fc -l -5 -1
+42	 fc -l -5 -1
+bash-3.2$ exit
+exit
