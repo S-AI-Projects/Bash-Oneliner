@@ -31,4 +31,4 @@ OK | command: expr 30 \> 20 | expected: 1 | actual: 1
 
 ## Environment
 
-CI runs the checker on Ubuntu 24.04 with Bash. The local checker is run in the task worktree and the repository's existing Bats tests are run separately.
+CI runs the checker on Ubuntu 24.04 with Bash. The local checker passes in the task worktree. The repository contains no existing Bats test files or other test runner, so there was no separate project test suite to run.
