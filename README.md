@@ -1013,9 +1013,9 @@ echo a b c |xargs -p -n 3
 
 ##### Print command along with output
 ```bash
-xargs -t abcd
-# bin/echo abcd
-# abcd
+echo abcd | xargs -t
+# stderr: echo abcd
+# stdout: abcd
 
 ```
 ##### With find and rm
