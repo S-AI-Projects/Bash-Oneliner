@@ -406,8 +406,8 @@ cat file| awk -F '\t' 'BEGIN {SUM=0}{SUM+=$3-$2}END{print SUM}'
 
 ##### Simple math with expr
 ```bash
-expr 10+20 #30
-expr 10\*20 #600
+expr 10 + 20 #30
+expr 10 \* 20 #200
 expr 30 \> 20 #1 (true)
 ```
 

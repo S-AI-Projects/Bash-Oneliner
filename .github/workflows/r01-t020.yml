@@ -1,0 +1,27 @@
+name: R01-T020 expr claims
+
+on:
+  push:
+    branches: [R01-T020]
+    paths:
+      - 'README.md'
+      - 'work/R01-T020/**'
+      - '.github/workflows/r01-t020.yml'
+  pull_request:
+    branches: [master]
+    paths:
+      - 'README.md'
+      - 'work/R01-T020/**'
+      - '.github/workflows/r01-t020.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  claims:
+    name: Check README expr output claims
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compare each expr example with its comment
+        run: bash work/R01-T020/claims.sh
