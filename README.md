@@ -1091,6 +1091,8 @@ ls |xargs -n1 wc -l
 ##### Turn output into a single line
 ```bash
 ls -l| xargs
+# Plain xargs treats quotes and backslashes as syntax and fails on an unmatched
+# quote. For a literal space-joined line, use: paste -sd' ' file
 ```
 
 ##### Count files within directories
