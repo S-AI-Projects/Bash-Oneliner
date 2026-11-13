@@ -3292,8 +3292,14 @@ history -d [line_number]
 
 ##### Interacting with history
 ```bash
-# list 5 previous command (similar to `history |tail -n 5` but wont print the history command itself)
+# list 5 previous commands (similar to `history | tail -n 5` but won't print the history command itself; note: history is off in scripts by default, see `set -o history`)
 fc -l -5
+
+# list a specific range of previous commands (from 5th prior command to the most recent)
+fc -l -5 -1
+
+# re-run the previous command replacing "old" with "new"
+fc -s old=new
 ```
 
 ##### Delete current bash command
