@@ -3206,6 +3206,19 @@ export LC_ALL=C
 # to revert:
 unset LC_ALL
 ```
+
+##### Compare sorting order with C and UTF-8 locales
+```bash
+printf "%s\n" B a _ | LC_ALL=C sort
+# B
+# _
+# a
+
+printf "%s\n" B a _ | LC_ALL=en_US.utf8 sort
+# _
+# a
+# B
+```
 ##### Encode strings as Base64 strings
 ```bash
 echo test|base64
