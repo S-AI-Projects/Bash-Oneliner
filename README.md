@@ -699,6 +699,8 @@ sed '$a\'
 ##### Add string to beginning of every line (e.g. 'bbo')
 ```bash
 sed -e 's/^/bbo/' filename
+awk '{print "bbo" $0}' filename
+# CRLF files retain their carriage return (^M) before the line ending.
 ```
 
 ##### Add string to end of each line (e.g. "}")
