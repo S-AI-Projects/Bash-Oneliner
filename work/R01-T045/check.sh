@@ -10,7 +10,7 @@ output="$tmpdir/output"
 # Start an interactive Bash shell with controlled history.
 HOME="$tmpdir" bash --noprofile --norc -i >"$output" 2>&1 <<EOF
 set -H
-echo 'touch "$marker"'
+history -s 'touch "$marker"'
 !!:p
 exit
 EOF
