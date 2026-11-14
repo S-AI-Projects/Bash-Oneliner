@@ -26,6 +26,25 @@ hi
 
 `tee` reports the write error and exits with status 1. It still prints the input to standard output.
 
+To check the individual exit statuses of both commands in the pipeline:
+
+Command:
+
+```bash
+echo hi | tee /tmp/tee-experiment/ro/out.txt
+printf 'PIPESTATUS: %s\n' "${PIPESTATUS[*]}"
+```
+
+Observed output:
+
+```text
+tee: /tmp/tee-experiment/ro/out.txt: Permission denied
+hi
+PIPESTATUS: 0 1
+```
+
+`PIPESTATUS` shows `0 1`: `echo` succeeded, while `tee` failed.
+
 ## 2. Pipeline status without pipefail
 
 Commands:
