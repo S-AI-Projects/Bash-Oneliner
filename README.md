@@ -78,6 +78,9 @@ Esc + c
 !!
 # run the previous command using sudo
 sudo !!
+# preview the previous command first with !!:p
+# enable review before execution with: shopt -s histverify
+# inspect the expanded command before pressing Enter
 ```
 
 ##### Run last command and change some parameter using caret substitution (e.g. last command: echo 'aaa' -> rerun as: echo 'bbb')
