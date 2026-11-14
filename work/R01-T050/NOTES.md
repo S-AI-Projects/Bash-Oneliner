@@ -28,9 +28,9 @@ otherwise empty line.
 ## Missing trailing newline
 
 The test checks a file whose last line has no trailing newline.
-The expected outputs are separate because GNU sed on Linux preserves
-the missing final newline, while BSD sed on macOS appends one.
-Awk's print statement adds a newline on both platforms.
+Both GNU sed on Linux and BSD sed on macOS preserve the missing final
+newline in this test. Awk's print statement adds a newline on both
+platforms.
 
 ## Test environment
 
