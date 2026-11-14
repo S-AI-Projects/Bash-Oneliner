@@ -3127,6 +3127,10 @@ cat file.txt|rev|column -t|rev
 ```bash
 echo 'hihihihi' | tee outputfile.txt
 # use '-a' with tee to append to file.
+# Use 'set -o pipefail' so a pipeline reports failures from earlier commands too.
+# Example: false | tee outputfile.txt
+# Without pipefail, this pipeline returns 0; with pipefail, it returns 1.
+# If tee cannot write to a file, it reports an error and exits non-zero.
 ```
 
 ##### Show non-printing (Ctrl) characters with cat
