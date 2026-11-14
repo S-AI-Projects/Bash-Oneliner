@@ -1702,6 +1702,12 @@ ps aux --forest
 ##### Find maximum number of processes
 ```bash
 cat /proc/sys/kernel/pid_max
+
+# Kernel PID-number ceiling (also exposed through /proc)
+sysctl kernel.pid_max
+
+# Per-user process limit for this shell
+ulimit -u
 ```
 
 ##### Print or control the kernel ring buffer
