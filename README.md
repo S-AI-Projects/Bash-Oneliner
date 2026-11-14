@@ -794,9 +794,15 @@ for i in $(ls); do sed -i "s/$/\t$i/" $i; done
 for i in T000086_1.02.n T000086_1.02.p; do sed "s/$/\t${i/*./}/" $i; done >T000086_1.02.np
 ```
 
-##### Remove newline\ nextline
+##### Remove newlines
 ```bash
 sed ':a;N;$!ba;s/\n//g'
+
+# For large files, prefer tr: it streams input and uses much less memory.
+tr -d '\n'
+
+# GNU sed alternative
+sed -z 's/\n//g'
 ```
 
 ##### Print a particular line (e.g. 123th line)
