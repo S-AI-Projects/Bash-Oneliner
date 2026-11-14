@@ -3558,7 +3558,8 @@ htop
 
 ##### Press any key to continue
 ```bash
-read -rsp $'Press any key to continue...\n' -n1 key
+# -r: read literally; -s: hide input; -p: display prompt; -n1: read one character; -t 5: wait up to five seconds.
+read -t 5 -n1 -rsp $'Press any key to continue...\n' key
 ```
 
 ##### Run sql-like command on files from terminal
