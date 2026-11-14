@@ -1444,6 +1444,8 @@ pwgen 13 5
 ##### Random pick 100 lines from a file
 ```bash
 shuf -n 100 filename
+# By default, shuf does not repeat lines; use -r to allow repeats
+shuf -n 100 -r filename
 ```
 
 ##### Random order (lucky draw)
