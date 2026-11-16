@@ -3380,6 +3380,9 @@ cd tmp/ && tar xvf ~/a.tar
 ##### Run command only if another command returns non-zero exit status (not finish)
 ```bash
 cd tmp/a/b/c ||mkdir -p tmp/a/b/c
+
+# create and enter directory if cd fails:
+cd tmp/a/b/c 2>/dev/null || { mkdir -p tmp/a/b/c && cd tmp/a/b/c; }
 ```
 
 ##### Use backslash "\" to break long command

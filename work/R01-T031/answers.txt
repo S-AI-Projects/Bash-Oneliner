@@ -1,0 +1,5 @@
+Q1: pwd=/d1 exit=1
+Q2: pwd=/x exit=0
+Q3: pwd=/ exit=0
+Q4: pwd=/d1 exit=0
+Q5: pwd=/d1 exit=0
