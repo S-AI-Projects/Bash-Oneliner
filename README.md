@@ -678,7 +678,11 @@ sed '/^$/d'
 ```
 ##### Delete/remove last line
 ```bash
+# works across GNU and BSD sed:
 sed '$d'
+
+# or using awk (buffers one line behind):
+awk 'NR>1{print prev} {prev=$0}'
 ```
 
 ##### Delete/remove last character from end of file
