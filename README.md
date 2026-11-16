@@ -643,6 +643,11 @@ sed -E '/^.{5}[^2]/d'
 ##### Edit infile (edit and save to file), (e.g. deleting the lines with 'bbo' and save to file)
 ```bash
 sed -i "/bbo/d" filename
+
+# keep a backup of the original file (e.g. filename.bak)
+sed -i.bak "/bbo/d" filename
+
+# note: on macOS (BSD sed), use -i '' when editing without a backup
 ```
 
 ##### When using variable (e.g. $i), use double quotes " "
@@ -3380,6 +3385,9 @@ cd tmp/ && tar xvf ~/a.tar
 ##### Run command only if another command returns non-zero exit status (not finish)
 ```bash
 cd tmp/a/b/c ||mkdir -p tmp/a/b/c
+
+# create and enter directory if cd fails:
+cd tmp/a/b/c 2>/dev/null || { mkdir -p tmp/a/b/c && cd tmp/a/b/c; }
 ```
 
 ##### Use backslash "\" to break long command
