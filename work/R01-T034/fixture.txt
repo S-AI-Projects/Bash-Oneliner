@@ -1,0 +1,5 @@
+A then B
+B then A
+only A
+only B
+AB

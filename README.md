@@ -565,6 +565,10 @@ grep 'A\|B\|C\|D'
 
 ##### Grep AND (e.g. A and B)
 ```bash
+# order-independent (matches both A and B in any order):
+grep 'A' filename | grep 'B'
+
+# note: matches only when A appears before B:
 grep 'A.*B'
 ```
 
