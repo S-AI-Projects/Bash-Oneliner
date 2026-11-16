@@ -922,12 +922,19 @@ awk 'NF{NF-=1};1' filename
 # fileB:
 # d
 # e
-awk 'print FILENAME, NR,FNR,$0}' fileA fileB
+awk '{print FILENAME, NR, FNR, $0}' fileA fileB
 # fileA    1    1    a
 # fileA    2    2    b
 # fileA    3    3    c
 # fileB    4    1    d
 # fileB    5    2    e
+
+# Two-file idiom: NR==FNR is true only while processing the first file
+# Print lines of fileB that appear in fileA (inner join):
+awk 'NR==FNR { seen[$1]; next } $1 in seen' fileA fileB
+
+# Print lines of fileB that do not appear in fileA (anti-join):
+awk 'NR==FNR { seen[$1]; next } !($1 in seen)' fileA fileB
 ```
 
 ##### AND gate
