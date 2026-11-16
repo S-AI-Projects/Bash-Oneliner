@@ -2158,6 +2158,15 @@ nproc --all
 ##### Show jobs and PID
 ```bash
 jobs -l
+
+# list only process IDs (PIDs):
+jobs -p
+
+# terminate background job 1:
+kill %1
+
+# remove job 1 from shell job table (won't receive SIGHUP on exit):
+disown %1
 ```
 
 ##### List all running services
