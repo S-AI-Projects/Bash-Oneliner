@@ -1,0 +1,25 @@
+name: "R01-T038: Test sed '$d' on Linux and macOS"
+
+on:
+  pull_request:
+  push:
+    branches:
+      - R01-T038
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Test on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run test.sh
+        shell: bash
+        run: bash work/R01-T038/test.sh

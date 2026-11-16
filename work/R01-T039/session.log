@@ -1,0 +1,40 @@
+Script started on Tue Nov 17 00:40:00 2026
+bash$ sleep 100 &
+[1] 42151
+bash$ sleep 100 &
+[2] 42154
+bash$ sleep 200
+^Z
+[3]+  Stopped                 sleep 200
+
+bash$ jobs -l
+[1]   42151 Running                 sleep 100 &
+[2]-  42154 Running                 sleep 100 &
+[3]+  42155 Stopped                 sleep 200
+
+bash$ bg %3
+[3]+ sleep 200 &
+
+bash$ jobs -l
+[1]   42151 Running                 sleep 100 &
+[2]-  42154 Running                 sleep 100 &
+[3]+  42155 Running                 sleep 200 &
+
+bash$ fg %2
+sleep 100
+^C
+
+bash$ kill %3
+[3]+  Terminated: 15          sleep 200
+
+bash$ jobs -l
+[1]+  42151 Running                 sleep 100 &
+
+bash$ disown %1
+
+bash$ jobs -l
+
+bash$ kill 42151 2>/dev/null
+bash$ exit
+
+Script done on Tue Nov 17 00:40:30 2026
