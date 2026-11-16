@@ -2833,8 +2833,19 @@ tr '\n' ' ' <filename
 
 ##### To uppercase/lowercase
 ```bash
-tr /a-z/ /A-Z/
+# translate lowercase to uppercase (ASCII)
+tr '[:lower:]' '[:upper:]'
 
+# or in modern Bash (Bash 4+):
+echo "${var^^}"
+
+# translate uppercase to lowercase
+tr '[:upper:]' '[:lower:]'
+# or in modern Bash:
+echo "${var,,}"
+
+# note: tr operates byte-by-byte on ASCII; for multi-byte Unicode/accented characters,
+# use awk '{print toupper($0)}' or bash ${var^^}.
 ```
 ##### Translate a range of characters (e.g. substitute a-z into a)
 ```bash
