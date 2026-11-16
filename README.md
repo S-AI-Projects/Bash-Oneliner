@@ -945,12 +945,12 @@ awk -v OFS='\t' 'NR=FNR{a[$1]=$2;next} NF {print $1,((a[$1]=$2)? $2:"0")}' fileA
 
 ##### Round all numbers of file (e.g. 2 significant figure)
 ```bash
-awk '{while (match($0, /[0-9]+\[0-9]+/)){
-    \printf "%s%.2f", substr($0,0,RSTART-1),substr($0,RSTART,RLENGTH)
-    \$0=substr($0, RSTART+RLENGTH)
-    \}
-    \print
-    \}'
+awk '{while (match($0, /[0-9]+\.[0-9]+/)){
+    printf "%s%.2f", substr($0, 1, RSTART-1), substr($0, RSTART, RLENGTH)
+    $0=substr($0, RSTART+RLENGTH)
+    }
+    print
+    }'
 ```
 
 ##### Give number/index to every row
