@@ -1422,12 +1422,17 @@ curl https://transfer.sh/tG8rM/filename.txt -o filename.txt
 
 ##### Download file if necessary
 ```bash
-data=file.txt
-url=http://www.example.net/$data
-if [ ! -s $data ];then
+data="LICENSE"
+url="https://raw.githubusercontent.com/onceupon/Bash-Oneliner/master/$data"
+
+# download if missing or empty:
+if [ ! -s "$data" ]; then
     echo "downloading test data..."
-    wget $url
+    curl -fsSL --retry 2 -o "$data" "$url"
 fi
+
+# or use curl -z (If-Modified-Since) to download only if newer than local file:
+curl -fsSL -z "$data" -o "$data" "$url"
 ```
 
 ##### Wget to a filename (when a long name)
