@@ -1083,9 +1083,14 @@ ls |xargs -n1 -I file sed -i '/^Pos/d' filename
 ls |sed 's/.txt//g'|xargs -n1 -I file sed -i -e '1 i\>file\' file.txt
 ```
 
-##### Count all files
+##### Count lines in each file
 ```bash
 ls |xargs -n1 wc -l
+```
+
+##### Count all files
+```bash
+find . -maxdepth 1 -type f | wc -l
 ```
 
 ##### Turn output into a single line
