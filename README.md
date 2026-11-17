@@ -1449,6 +1449,9 @@ shuf -n 100 filename
 ##### Random order (lucky draw)
 ```bash
 for i in a b c d e; do echo $i; done | shuf
+
+# Make draw reproducible for testing by supplying a deterministic random source
+for i in a b c d e; do echo $i; done | shuf --random-source=<(yes)
 ```
 
 ##### Echo series of random numbers between a range (e.g. shuffle numbers from 0-100, then pick 15 of them randomly)
