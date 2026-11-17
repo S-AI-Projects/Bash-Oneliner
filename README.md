@@ -1420,6 +1420,10 @@ fi
 ##### Wget to a filename (when a long name)
 ```bash
 wget -O filename "http://example.net"
+
+# Warning: wget -O leaves an empty 0-byte file if the download fails (e.g. 404).
+# A safer alternative that does not create the destination file on error:
+curl -fsSL -o filename "http://example.net"
 ```
 
 ##### Wget files to a folder
