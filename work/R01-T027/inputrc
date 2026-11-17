@@ -1,0 +1,2 @@
+# Test Readline configuration mapping Ctrl-x u to upcase-word
+"\C-xu": upcase-word

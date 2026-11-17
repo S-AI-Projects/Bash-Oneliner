@@ -1,0 +1,25 @@
+Script started on Mon Nov 17 23:59:00 2026
+bash-5.2$ echo "Testing Readline Case Commands"
+Testing Readline Case Commands
+
+# Initial typed text:
+bash-5.2$ sample word test
+# Place cursor at beginning of 'word' and press Esc + u (upcase-word):
+# Result:
+bash-5.2$ sample WORD test
+
+# Place cursor at beginning of 'WORD' and press Esc + l (downcase-word):
+# Result:
+bash-5.2$ sample word test
+
+# Place cursor at beginning of 'word' and press Esc + c (capitalize-word):
+# Result:
+bash-5.2$ sample Word test
+
+# Testing custom binding \C-xu (Ctrl-x u):
+# Typed: sample lowercase text
+# Pressed Ctrl-x u on 'lowercase':
+# Result:
+bash-5.2$ sample LOWERCASE text
+
+Script done on Mon Nov 17 23:59:15 2026

@@ -66,6 +66,7 @@ Esc + l
 # converts text from cursor to the end of the word to lowercase.
 Esc + c
 # converts letter under the cursor to uppercase, rest of the word to lowercase.
+# Tip: View or search active Readline bindings with: bind -P | grep -E 'upcase|downcase|capitalize'
 ```
 
 ##### Run history number (e.g. 53)
