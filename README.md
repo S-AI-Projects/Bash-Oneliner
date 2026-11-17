@@ -2537,6 +2537,8 @@ lsblk -io KNAME,TYPE,MODEL,VENDOR,SIZE,ROTA
 lspci
 # List information about NIC
 lspci | egrep -i --color 'network|ethernet'
+# Show both description and numeric vendor:device IDs (lspci reads IDs from /sys/bus/pci/devices and maps names via pci.ids)
+lspci -nn
 ```
 
 ##### List all USB devices
