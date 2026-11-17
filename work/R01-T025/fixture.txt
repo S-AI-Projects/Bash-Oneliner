@@ -1,0 +1,5 @@
+bbo c2 c3 c4 c5 c6 c7 c8 c9 obb
+bbo c2 c3 c4 c5 c6 c7 c8 c9 nomatch
+nomatch c2 c3 c4 c5 c6 c7 c8 c9 obb
+bbo c2 c3 c4 c5 c6 c7 c8 c9 obb
+other c2 c3 c4 c5 c6 c7 c8 c9 other
