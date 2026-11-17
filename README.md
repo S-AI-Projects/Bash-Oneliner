@@ -817,6 +817,9 @@ sed 's=/=\\/=g'
 ##### Replace with wildcard (e.g A-1-e or A-2-e or A-3-e....)
 ```bash
 sed 's/A-.*-e//g' filename
+
+# Note: '.*' is greedy and spans from first 'A-' to last '-e'; use negated character class for non-greedy match:
+sed 's/A-[^-]*-e//g' filename
 ```
 
 ##### Remove last character of file
