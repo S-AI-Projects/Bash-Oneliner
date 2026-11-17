@@ -2428,6 +2428,16 @@ lastb
 ##### Show a listing of current logged in users, print information of them
 ```bash
 who
+
+# Show time of last system boot
+who -b
+# Example output:          system boot  Nov 12 12:15
+
+# Quick count of all logged in users and total user count
+who -q
+# Example output:
+# nikhil
+# # users = 1
 ```
 ##### Show who is logged on and what they are doing
 ```bash
