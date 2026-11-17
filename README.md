@@ -610,6 +610,9 @@ grep -o -w "\w\{10\}\-R\w\{1\}"
 ##### Skip directory (e.g. 'bbo')
 ```bash
 grep -d skip 'bbo' /path/to/files/*
+
+# Portable equivalent (e.g. BusyBox grep lacks -d skip)
+find /path -maxdepth 1 -type f -exec grep -H 'bbo' {} +
 ```
 
 
