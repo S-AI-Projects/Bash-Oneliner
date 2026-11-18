@@ -2437,6 +2437,10 @@ w
 ##### Print the user names of users currently logged in to the current host.
 ```bash
 users
+
+# Note: 'users' prints a name for each login session (repeats for multiple terminals).
+# Print unique logged-in users only:
+who | awk '{print $1}' | sort -u
 ```
 
 ##### Stop tailing a file on program terminate
