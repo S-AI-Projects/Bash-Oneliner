@@ -2080,6 +2080,10 @@ more /proc/cpuinfo
 
 # or
 lscpu
+
+# or show number of processing units available to current process (respects cgroup/affinity)
+nproc
+# Note: nproc can show fewer CPUs than /proc/cpuinfo or lscpu due to cgroup CPU quotas or taskset affinity.
 ```
 
 ##### Set quota for user (e.g. disk soft limit: 120586240; hard limit: 125829120)
