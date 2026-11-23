@@ -751,7 +751,10 @@ sed -n 500,5000p filename
 ```bash
 sed -n '0~3p' filename
 
-# catch 0: start; 3: step
+# catch 0: start; 3: step (note: first~step is GNU sed only)
+
+# or portable across all platforms using awk:
+awk 'NR%3==0' filename
 ```
 
 ##### Print every odd # lines
