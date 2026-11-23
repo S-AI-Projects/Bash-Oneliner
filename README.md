@@ -3317,6 +3317,12 @@ Alt+Shift+#
 ##### Get last history/record filename
 ```bash
 head !$
+
+# or inside shell scripts (where history expansion is disabled):
+head "$_"
+
+# or in interactive readline terminal:
+# Press Alt + . (or Esc then .) to yank the last argument of previous command
 ```
 
 ##### Clean screen

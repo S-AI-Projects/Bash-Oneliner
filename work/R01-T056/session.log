@@ -1,0 +1,8 @@
+$ ls /etc/hosts
+/etc/hosts
+$ head !$
+head /etc/hosts
+127.0.0.1 localhost
+$ echo $_
+/etc/hosts
+$ # Pressing Alt + . in interactive readline inserts: /etc/hosts
