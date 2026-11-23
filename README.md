@@ -2109,6 +2109,14 @@ lastlog
 ##### Check last reboot history
 ```bash
 last reboot
+
+# Note: 'last' parses binary login/reboot records from /var/log/wtmp
+
+# Alternative ways to check last boot time:
+who -b
+
+# or
+uptime -s
 ```
 
 ##### Edit path for all users
