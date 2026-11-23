@@ -666,6 +666,9 @@ sed '/^\s*$/d'
 # or
 
 sed '/^$/d'
+
+# Portable POSIX form (also removes CRLF blank lines; note: \s is a GNU extension):
+sed '/^[[:space:]]*$/d'
 ```
 ##### Delete/remove last line
 ```bash
