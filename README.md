@@ -1333,6 +1333,10 @@ date -d"7 days ago" +"%F %H:%M:%S"
 date -d"1 week ago" +"%F %H:%M:%S"
 # 2023-03-04 16:17:09
 
+# macOS / BSD equivalent (since date -d is GNU-only):
+date -v-1d +"%F %H:%M:%S"
+
+
 # add 1 day to date
 date -d"-1 day ago" +"%F %H:%M:%S"
 # 2023-03-12 16:17:09
