@@ -2851,7 +2851,7 @@ diff fileA fileB --strip-trailing-cr
 
 ##### Find common/differing lines
 ```bash
-# having two sorted and uniqed files (for example after running `$ sort -uo fileA fileA` and same for fileB):
+# having two sorted and uniqed files (note: comm requires sorted inputs; unsorted inputs trigger 'file is not in sorted order' warnings. Fix with sort -uo fileA fileA and sort -uo fileB fileB):
 # ------
 # fileA:
 # ------
