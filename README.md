@@ -1124,6 +1124,9 @@ find .
 ##### List all files under the current directory
 ```bash
 find . -type f
+
+# or list all files skipping hidden files and directories:
+find . -type f -not -path '*/.*'
 ```
 
 ##### List all directories under the current directory
