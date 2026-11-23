@@ -1154,6 +1154,9 @@ find / -type f -size +4G
 find . -name "*.mso" -size -74c -delete
 
 # M for MB, etc
+# Warning: Always run with '-print' first to preview before '-delete'!
+# Note: '-delete' implies '-depth'. Never place '-delete' before selection predicates like '-name'.
+# Note on units: '-size -1k' rounds up and matches only 0-byte (empty) files; use '-size -1024c' to match 0-1023 bytes.
 ```
 
 ##### Find empty (0 byte) files
